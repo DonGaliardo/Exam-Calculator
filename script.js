@@ -34,13 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
             responsive: true,
             maintainAspectRatio: false,
             grouped: false, // This makes the bars overlap instead of sit side-by-side
+            interaction: {
+                mode: 'y',
+                intersect: false,
+            },
             plugins: {
                 legend: {
                     display: false // hidden corresponding to screenshot
                 },
                 tooltip: {
-                    mode: 'index',
-                    intersect: false,
                     backgroundColor: 'rgba(71, 85, 105, 0.95)',
                     titleColor: '#ffffff',
                     bodyColor: '#ffffff',
