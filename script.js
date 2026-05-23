@@ -41,7 +41,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 tooltip: {
                     mode: 'index',
                     intersect: false,
+                    backgroundColor: 'rgba(71, 85, 105, 0.95)',
+                    titleColor: '#ffffff',
+                    bodyColor: '#ffffff',
+                    borderColor: '#cbd5e1',
+                    borderWidth: 1,
+                    padding: 8,
+                    displayColors: false,
                     callbacks: {
+                        title: function(context) {
+                            return `Month #${context[0].label}`;
+                        },
                         label: function(context) {
                             return `${context.dataset.label}: ${context.raw}`;
                         }
