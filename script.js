@@ -12,19 +12,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 {
                     label: 'Prospects',
                     data: [],
-                    backgroundColor: '#64748b',
+                    backgroundColor: 'rgba(100, 116, 139, 0.35)',
+                    borderColor: 'rgba(100, 116, 139, 0.8)',
+                    borderWidth: 1,
+                    borderSkipped: false,
+                    hoverBackgroundColor: 'rgba(100, 116, 139, 0.5)',
                     barThickness: 35
                 },
                 {
                     label: 'Leads',
                     data: [],
-                    backgroundColor: '#94a3b8',
+                    backgroundColor: 'rgba(148, 163, 184, 0.55)',
+                    borderColor: 'rgba(148, 163, 184, 0.9)',
+                    borderWidth: 1,
+                    borderSkipped: false,
+                    hoverBackgroundColor: 'rgba(148, 163, 184, 0.7)',
                     barThickness: 25
                 },
                 {
                     label: 'Customers',
                     data: [],
-                    backgroundColor: '#cbd5e1',
+                    backgroundColor: 'rgba(203, 213, 225, 0.85)',
+                    borderColor: 'rgba(255, 255, 255, 0.6)',
+                    borderWidth: 1,
+                    borderSkipped: false,
+                    hoverBackgroundColor: 'rgba(203, 213, 225, 1)',
                     barThickness: 15
                 }
             ]
@@ -48,8 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     bodyColor: '#ffffff',
                     borderColor: '#cbd5e1',
                     borderWidth: 1,
-                    padding: 8,
-                    displayColors: false,
+                    padding: 10,
+                    displayColors: false, // Disables color swatches in tooltip
                     callbacks: {
                         title: function(context) {
                             return `Month #${context[0].label}`;
@@ -128,13 +140,16 @@ function calculate() {
     const pctCustomers = prospects === 0 ? 0 : Math.round((customers / prospects) * 100);
 
     document.getElementById('pct-prospects').innerText = '100%';
-    document.getElementById('bar-prospects').style.width = '100%';
+    document.getElementById('bar-prospects-p').style.width = '100%';
+    document.getElementById('bar-prospects-l').style.width = pctLeads + '%';
+    document.getElementById('bar-prospects-c').style.width = pctCustomers + '%';
 
     document.getElementById('pct-leads').innerText = pctLeads + '%';
-    document.getElementById('bar-leads').style.width = pctLeads + '%';
+    document.getElementById('bar-leads-l').style.width = pctLeads + '%';
+    document.getElementById('bar-leads-c').style.width = pctCustomers + '%';
 
     document.getElementById('pct-customers').innerText = pctCustomers + '%';
-    document.getElementById('bar-customers').style.width = pctCustomers + '%';
+    document.getElementById('bar-customers-c').style.width = pctCustomers + '%';
 
     // Calculate timescale setup
     const start = new Date(document.getElementById('camp-start').value);

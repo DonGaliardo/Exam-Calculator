@@ -184,21 +184,22 @@ select:focus, input:focus {
     height: 8px;
     background-color: var(--color-track);
     border-radius: 4px;
-    overflow: hidden;
     position: relative;
+    overflow: hidden;
 }
 
 .progress-fill {
     height: 100%;
     border-radius: 4px;
     transition: width 0.3s ease;
-    background-color: #fff; /* fallback */
+    position: absolute; /* absolute position for overlapping layers */
+    left: 0;
+    top: 0;
 }
 
-/* Different progress bar colors referencing the tooltips and card styling in img */
-.kpi-card:nth-child(1) .progress-fill { background-color: var(--color-prospects); }
-.kpi-card:nth-child(2) .progress-fill { background-color: var(--color-leads); }
-.kpi-card:nth-child(3) .progress-fill { background-color: var(--color-customers); }
+.prospects-bg { background-color: var(--color-prospects); z-index: 1; }
+.leads-bg { background-color: var(--color-leads); z-index: 2; }
+.customers-bg { background-color: var(--color-customers); z-index: 3; }
 
 
 /* Bottom Section / Sliders */
